@@ -6,7 +6,12 @@
 
 <script>
 export default {
-  name: 'Profile'
+  name: 'Profile',
+  data () {
+    return {
+      showModal: true
+    }
+  }
 }
 </script>
 
