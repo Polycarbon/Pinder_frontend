@@ -1,6 +1,6 @@
 <template>
   <div class="ui label">
-    profile first
+    profile LLLOOLLL
   </div>
 </template>
 
