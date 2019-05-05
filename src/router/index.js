@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Matches from '@/components/Matches'
 import Profile from '@/components/Profile'
+import ProfileUser from '@/components/ProfileUser'
 import ChatList from '@/components/ChatList'
 import SignIn from '@/components/SignIn'
 import SignUp from '@/components/SignUp'
@@ -47,6 +48,14 @@ let router = new Router({
       path: '/chat',
       name: 'chat',
       component: ChatList,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/profileuser',
+      name: 'profileuser',
+      component: ProfileUser,
       meta: {
         requiresAuth: true
       }

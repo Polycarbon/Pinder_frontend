@@ -1,25 +1,32 @@
 <template>
   <div class="ui segment">
-      <div class="ui centered link cards">
+      <div class="ui fluid centered link cards" style="margin-bottom: 3%">
                 <div class="card">
-                <div class="image">
-                    <img src = "../assets/logo.png" >
+                <div class="large image" >
+                  <a class="img" href="#/ProfileUser">
+                    <img class="ui fluid image" src = "../assets/logo.png">
+                  </a>
                 </div>
                 <div class="content">
-                <div class=" left aligned header">AAAA AAAA</div>
-                <div class="description">
+                <div class=" left aligned header">
+                <a class= "header" href="#/ProfileUser">  Henry's Dog </a>
+                </div>
+                <div class=" left aligned meta">
+                   <a>15 Kilometers</a>
                    <!-- <a> Mobile: {{auser.mobileNO}} </a><br>
                    <a> Email: {{auser.email}}</a> <br>
                    <a> Facebook: {{auser.facebook}}</a> <br> -->
                 </div>
                 </div>
                 </div>
-                </div>
-      <div class="ui red button" @click="popup">
-        noop
+        
+
+      </div>
+      <div class="ui basic red button" @click="popupUnmatch">
+        <i class="close icon" style="margin-left: 10%"></i>
       </div>          
-      <div class="ui blue button" @click="popup">
-        matches
+      <div class="ui basic green button" @click="popupMatch">
+        <i class="thumbs up outline  icon" style="margin-left: 10%"></i>
       </div>
     
     <!-- if match it's show modal that performed information who you match -->
@@ -48,7 +55,7 @@
         </div>
       </div>
     </div>
-
+  
   </div>
 </template>
 
@@ -63,14 +70,17 @@
     }
   },
   methods: {
-    popup () {
+    popupMatch () {
       $('.ui.modal')
         .modal("show")
+    },
+    popupUnmatch(){
+      
     }
   }
 }
 </script>
 
 <style scoped>
-
+  
 </style>
