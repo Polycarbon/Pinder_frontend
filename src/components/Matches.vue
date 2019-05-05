@@ -1,8 +1,28 @@
 <template>
   <div class="ui segment">
-    <div class="ui button" @click="popup">
-      matches
-    </div>
+      <div class="ui centered link cards">
+                <div class="card">
+                <div class="image">
+                    <img src = "../assets/logo.png" >
+                </div>
+                <div class="content">
+                <div class=" left aligned header">AAAA AAAA</div>
+                <div class="description">
+                   <!-- <a> Mobile: {{auser.mobileNO}} </a><br>
+                   <a> Email: {{auser.email}}</a> <br>
+                   <a> Facebook: {{auser.facebook}}</a> <br> -->
+                </div>
+                </div>
+                </div>
+                </div>
+      <div class="ui red button" @click="popup">
+        noop
+      </div>          
+      <div class="ui blue button" @click="popup">
+        matches
+      </div>
+    
+    <!-- if match it's show modal that performed information who you match -->
     <div class="ui modal">
       <i class="close icon"></i>
       <div class="header">
@@ -28,13 +48,20 @@
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
 <script>
 /* eslint-disable */
+  import axios from "axios"
   export default {
   name: 'Match',
+  data(){
+    return{
+      Users:[]
+    }
+  },
   methods: {
     popup () {
       $('.ui.modal')
