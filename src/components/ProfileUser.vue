@@ -7,8 +7,8 @@
       </div>
     </div>
     <div class="ui segment">
-      <p class="ui horizontal divider header">
-        <i class="paw icon"></i>
+      <p class="ui horizontal divider orange header">
+        <i class="orange paw icon"></i>
         Profile
       </p>
         <h2 class="ui left aligned header">{{Users.pet.name}} , {{Users.pet.age}}</h2>
@@ -36,8 +36,8 @@
           <i class="ui user icon"></i>
         </div> -->
       
-      <p class="ui horizontal divider header">
-        <i class="address book icon"></i>
+      <p class="ui horizontal divider orange header">
+        <i class="address book orange icon"></i>
         Contact
       </p>
     </div>

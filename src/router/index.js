@@ -2,8 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Matches from '@/components/Matches'
 import Profile from '@/components/Profile'
-import ProfileUser from '@/components/ProfileUser'
-import ChatList from '@/components/ChatList'
+import Profileuser from '@/components/Profileuser'
+import Favorite from '@/components/Favorite'
 import SignIn from '@/components/SignIn'
 import SignUp from '@/components/SignUp'
 
@@ -45,9 +45,9 @@ let router = new Router({
       }
     },
     {
-      path: '/chat',
-      name: 'chat',
-      component: ChatList,
+      path: '/favorite',
+      name: 'favorite',
+      component: Favorite,
       meta: {
         requiresAuth: true
       }
@@ -55,7 +55,7 @@ let router = new Router({
     {
       path: '/profileuser/:userId',
       name: 'profileuser',
-      component: ProfileUser,
+      component: Profileuser,
       meta: {
         requiresAuth: true
       }

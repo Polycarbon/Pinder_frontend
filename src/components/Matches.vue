@@ -13,7 +13,7 @@
           <div class="content">
           <div class=" left aligned header">
           <router-link  :to="{ path: 'profileuser/' + auser._id}">
-          <a class= "petname header" href="#/ProfileUser">  {{auser.firstName}} {{auser.lastName}}</a>
+          <a class= "petname header" >  {{auser.firstName}} {{auser.lastName}}</a>
           </router-link>
           <a class= "age right aligned header"></a>
           </div>

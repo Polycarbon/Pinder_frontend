@@ -3,13 +3,13 @@
     <div class="ui center aligned container">
       <div class="ui three columns grid secondary pointing icon menu">
         <a class="column middle aligned item" href="#/profile">
-          <i class="big user icon"></i>
+          <i class="big user orange icon"></i>
         </a>
         <a class="column middle aligned  item" href="#/matches">
-          <i class="big fire icon"></i>
+          <i class="big fire orange icon"></i>
         </a>
-        <a class="column middle aligned  item" href="#/chat">
-          <i class="big conversation icon"></i>
+        <a class="column middle aligned  item" href="#/favorite">
+          <i class="big conversation orange icon"></i>
         </a>
       </div>
       <router-view/>
