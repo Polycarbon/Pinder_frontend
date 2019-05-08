@@ -2,7 +2,7 @@
 <div class="ui raised very padded text container segment">
     <div>
         <div class="ui  very  container centered aligned">
-    <img class="ui medium circular image centered" src=" https://semantic-ui.com/images/avatar/large/stevie.jpg">
+    <img class="ui medium circular image centered" src=" https://semantic-ui.com/images/avatar/large/daniel.jpg">
         </div>
      <div class="meta">
         <a>Friends</a>
@@ -21,10 +21,10 @@
       </span>
     </div>
     <!--<hr style="width: 5px; height: 100px; background: black; border: none;" />-->
-    <div class="ui large buttons">
-  <button class="ui button" onclick="location.href='#/setting'" > <img src="https://s3.amazonaws.com/peoplepng/wp-content/uploads/2019/01/12074518/logo-setting-png-4.png" width="50px" height="50px"></button>
+   <div class="ui buttons ">
+  <button class="ui button" onclick="location.href='#/setting'"><i class="icon setting" style ="margin-left:15%"></i></button>
   <div class="or"></div>
-  <button class="ui button" onclick="location.href='#/edit'"><img src="http://freevector.co/wp-content/uploads/2011/12/84380-edit-button.png" width="50px" height="50px" alt=""></button>
+  <button class="ui positivel button orange " onclick="location.href='#/edit'"><i class="icon edit" style ="margin-left:15%"></i></button>
 </div>
     </div>
     </div>
@@ -37,5 +37,25 @@ export default {
 <style>
 .divformain {
   border-radius: 50%;
+}
+.lovm{
+  background-color: orangered
+
+}
+.setting{
+  color:orange;
+ 
+
+}
+.edit{
+  color:orange;
+ 
+
+}
+
+.button{
+  background-color:orange;
+  text-shadow:orange;
+  color:orange
 }
 </style>
