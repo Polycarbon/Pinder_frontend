@@ -1,24 +1,25 @@
 <template>
   <div class="ui segment">
       <div class="ui segment">
-      <div class="ui centered link cards" style="margin-bottom: 3%" v-for="(auser,i) in Users" v-bind:key="auser._id">
+      <div class="ui centered link cards" style="margin-bottom: 3%" v-for="(auser) in Users" v-bind:key="auser._id">
           <div class="medium image" >
             <router-link  :to="{ path: 'profileuser/' + auser._id}">
             <a class="img">
-              <img class="ui medium image"  v-if="auser.pet.pictures===null" v-bind:src = "'http://api.adorable.io/avatars/285/'+auser.firstName+'.png'">
+              <img class="ui medium image"  v-if="auser.pet.pictures!==null" v-bind:src = "'http://api.adorable.io/avatars/285/'+auser.firstName+'.png'">
+              <img class="ui medium image"  v-else v-bind:src = "auser.pet.pictures[0].large">
             </a>
             </router-link>
           </div>
-          <p>{{Pets[i].description}}</p>
+          <!-- <p>{{apet.pictures[0].large}}</p> -->
+          <!-- <p>{{Pets[i].description}}</p> -->
           <div class="content">
-          <div class=" left aligned header">
+          <h3 class="ui left aligned header">
           <router-link  :to="{ path: 'profileuser/' + auser._id}">
-          <a class= "petname header" >  {{auser.firstName}} {{auser.lastName}}</a>
+          <a class= "ui left aligned petname " >  {{auser.firstName}} {{auser.lastName}}</a>
           </router-link>
-          <a class= "age right aligned header"></a>
-          </div>
-          <div class=" left aligned meta">
-             <a>15 Kilometers</a>
+          </h3>
+          <div class="ui left aligned meta">
+             <p>15 Kilometers</p>
           </div>
           </div>
       </div>
@@ -89,6 +90,7 @@
         this.Users = response.data;
         console.log(this.Users)
         this.Pets = this.Users.map((user)=>{
+          console.log(user.pet)
           return user.pet
         });
         console.log(response.data[0].pet)
