@@ -84,10 +84,22 @@
 /* eslint-disable */
 import axios from "axios";
 export default {
-  name: "Match",
+  name: "Profileuser",
   data() {
     return {
-      Users: []
+      Users: [],
+      Pets:[{
+        name: "",
+        size: "",
+        description: "",
+        pet_id: "",
+        type: "",
+        species: "",
+        age: "",
+        gender: "",
+        status: "",
+        contact: ""
+      }]
     };
   },
   methods: {

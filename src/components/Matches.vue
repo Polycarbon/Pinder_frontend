@@ -1,21 +1,21 @@
 <template>
   <div class="ui segment">
       <div class="ui segment">
-      <div class="ui centered link cards" style="margin-bottom: 3%" v-for="(auser) in Users" v-bind:key="auser._id">
+      <div class="ui centered link cards" style="margin-bottom: 3%" v-for="pet in Pets" v-bind:key="pet._id">
           <div class="medium image" >
-            <router-link  :to="{ path: 'profileuser/' + auser._id}">
+            <router-link  :to="{ path: 'profileuser/' + pet._id}">
             <a class="img">
-              <img class="ui medium image"  v-if="auser.pet.pictures!==null" v-bind:src = "'http://api.adorable.io/avatars/285/'+auser.firstName+'.png'">
-              <img class="ui medium image"  v-else v-bind:src = "auser.pet.pictures[0].large">
+              <img class="ui medium image"  v-if="pet.pictures===null" v-bind:src = "'http://api.adorable.io/avatars/285/'+pet.firstName+'.png'">
+              <img class="ui medium image"  v-else v-bind:src = "pet.pictures[0].large">
             </a>
             </router-link>
           </div>
-          <!-- <p>{{apet.pictures[0].large}}</p> -->
-          <!-- <p>{{Pets[i].description}}</p> -->
+          <!-- <p>{{pet.pictures[0].large}}</p>
+          <p>{{pet.picture.large}}</p> -->
           <div class="content">
           <h3 class="ui left aligned header">
-          <router-link  :to="{ path: 'profileuser/' + auser._id}">
-          <a class= "ui left aligned petname " >  {{auser.firstName}} {{auser.lastName}}</a>
+          <router-link  :to="{ path: 'profileuser/' + pet._id}">
+          <a class= "ui left aligned petname " >  {{pet.name}}</a>
           </router-link>
           </h3>
           <div class="ui left aligned meta">
@@ -68,7 +68,6 @@
   name: 'Match',
   data(){
     return{
-      Users:[],
       Pets:[]
     }
   },
@@ -82,25 +81,25 @@
     }
   },
   mounted(){
-      var url = "http://localhost:3000/user"
+      var url = "http://localhost:3000/pets"
     axios
       .get(url)
       .then(response => {
         console.log(response.data);
-        this.Users = response.data;
-        console.log(this.Users)
-        this.Pets = this.Users.map((user)=>{
-          console.log(user.pet)
-          return user.pet
-        });
-        console.log(response.data[0].pet)
-        console.log(response.data[0].pet.pictures[0].large)
+        // this.Users = response.data;
+        // console.log(this.Users)
+        // this.Pets = this.Users.map((user)=>{
+        //   //console.log(user.pet)
+        //   return user.pet
+        // });
+        this.Pets = response.data
+        console.log("///////////////////////////////////////////////////")
+        console.log(response.data[0].size)
       })
       .catch(error => {
         console.log(error);
       });
     }
-
     }
 
 
