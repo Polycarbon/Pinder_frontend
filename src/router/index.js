@@ -6,6 +6,9 @@ import ProfileUser from '@/components/ProfileUser'
 import ChatList from '@/components/ChatList'
 import SignIn from '@/components/SignIn'
 import SignUp from '@/components/SignUp'
+import MainProfile from '@/components/MainProfile'
+import edit from '@/components/edit'
+import setting from '@/components/setting'
 
 Vue.use(Router)
 let router = new Router({
@@ -38,8 +41,8 @@ let router = new Router({
     },
     {
       path: '/profile',
-      name: 'profile',
-      component: Profile,
+      name: 'MainProfile',
+      component: MainProfile,
       meta: {
         requiresAuth: true
       }
@@ -56,6 +59,22 @@ let router = new Router({
       path: '/profileuser',
       name: 'profileuser',
       component: ProfileUser,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/edit',
+      name: 'edit',
+      component: edit,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/setting',
+      name: 'setting',
+      component: setting,
       meta: {
         requiresAuth: true
       }
