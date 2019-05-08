@@ -1,26 +1,22 @@
 <template>
   <div class="ui segment">
-      <div class="ui fluid centered link cards" style="margin-bottom: 3%">
-                <div class="card">
-                <div class="large image" >
+      <div class="ui segment">
+      <div class="ui centered link cards" style="margin-bottom: 3%" v-for="auser in Users" v-bind:key="auser._id">
+                <div class="medium image" >
                   <a class="img" href="#/ProfileUser">
-                    <img class="ui fluid image" src = "../assets/logo.png">
+                    <img class="ui medium image" :src = "auser.picture.large">
                   </a>
                 </div>
                 <div class="content">
                 <div class=" left aligned header">
-                <a class= "header" href="#/ProfileUser">  Henry's Dog </a>
+                <a class= "petname header" href="#/ProfileUser">  {{auser.firstName}} {{auser.lastName}}</a>
+                <a class= "age right aligned header"></a>
                 </div>
                 <div class=" left aligned meta">
                    <a>15 Kilometers</a>
-                   <!-- <a> Mobile: {{auser.mobileNO}} </a><br>
-                   <a> Email: {{auser.email}}</a> <br>
-                   <a> Facebook: {{auser.facebook}}</a> <br> -->
                 </div>
                 </div>
-                </div>
-        
-
+      </div>    
       </div>
       <div class="ui basic red button" @click="popupUnmatch">
         <i class="close icon" style="margin-left: 10%"></i>
@@ -77,8 +73,25 @@
     popupUnmatch(){
       
     }
-  }
-}
+  },
+  mounted(){
+      var url = "http://localhost:3000/user" 
+    axios
+      .get(url)
+      .then(response => {
+        console.log(response.data);
+        this.Users = response.data;
+        console.log(response.data[0].pet)
+        console.log(response.data[0].pet.pictures[0].large)
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    }
+  
+    }
+  
+
 </script>
 
 <style scoped>
