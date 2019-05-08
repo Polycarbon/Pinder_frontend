@@ -53,7 +53,7 @@ let router = new Router({
       }
     },
     {
-      path: '/profileuser',
+      path: '/profileuser/:userId',
       name: 'profileuser',
       component: ProfileUser,
       meta: {

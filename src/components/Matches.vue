@@ -3,14 +3,18 @@
       <div class="ui segment">
       <div class="ui centered link cards" style="margin-bottom: 3%" v-for="(auser,i) in Users" v-bind:key="auser._id">
           <div class="medium image" >
-            <a class="img" href="#/ProfileUser">
+            <router-link  :to="{ path: 'profileuser/' + auser._id}">
+            <a class="img">
               <img class="ui medium image"  v-if="auser.pet.pictures===null" v-bind:src = "'http://api.adorable.io/avatars/285/'+auser.firstName+'.png'">
             </a>
+            </router-link>
           </div>
           <p>{{Pets[i].description}}</p>
           <div class="content">
           <div class=" left aligned header">
+          <router-link  :to="{ path: 'profileuser/' + auser._id}">
           <a class= "petname header" href="#/ProfileUser">  {{auser.firstName}} {{auser.lastName}}</a>
+          </router-link>
           <a class= "age right aligned header"></a>
           </div>
           <div class=" left aligned meta">
