@@ -1,6 +1,13 @@
 <template>
-  <div class="ui label">
-    chat list
+  <div id="chatlist">
+    <h3 class="orange ui header">
+      New Match
+    </h3>
+    <div class="ui horizontal divider">
+    </div>
+    <h3 class="orange ui header">
+      Message
+    </h3>
   </div>
 </template>
 
@@ -12,5 +19,9 @@
 </script>
 
 <style scoped>
-
+  #chatlist {
+    text-align: left;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
 </style>

@@ -1,8 +1,32 @@
 <template>
   <div class="ui segment">
-    <div class="ui button" @click="popup">
-      matches
-    </div>
+      <div class="ui segment">
+      <div class="ui centered link cards" style="margin-bottom: 3%" v-for="(auser,i) in Users" v-bind:key="auser._id">
+          <div class="medium image" >
+            <a class="img" href="#/ProfileUser">
+              <img class="ui medium image"  v-if="auser.pet.pictures===null" v-bind:src = "'http://api.adorable.io/avatars/285/'+auser.firstName+'.png'">
+            </a>
+          </div>
+          <p>{{Pets[i].description}}</p>
+          <div class="content">
+          <div class=" left aligned header">
+          <a class= "petname header" href="#/ProfileUser">  {{auser.firstName}} {{auser.lastName}}</a>
+          <a class= "age right aligned header"></a>
+          </div>
+          <div class=" left aligned meta">
+             <a>15 Kilometers</a>
+          </div>
+          </div>
+      </div>
+      </div>
+      <div class="ui basic red button" @click="popupUnmatch">
+        <i class="close icon" style="margin-left: 10%"></i>
+      </div>
+      <div class="ui basic green button" @click="popupMatch">
+        <i class="thumbs up outline  icon" style="margin-left: 10%"></i>
+      </div>
+
+    <!-- if match it's show modal that performed information who you match -->
     <div class="ui modal">
       <i class="close icon"></i>
       <div class="header">
@@ -28,20 +52,52 @@
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
 <script>
 /* eslint-disable */
+  import axios from "axios"
   export default {
   name: 'Match',
+  data(){
+    return{
+      Users:[],
+      Pets:[]
+    }
+  },
   methods: {
-    popup () {
+    popupMatch () {
       $('.ui.modal')
         .modal("show")
+    },
+    popupUnmatch(){
+
     }
-  }
-}
+  },
+  mounted(){
+      var url = "http://localhost:3000/user"
+    axios
+      .get(url)
+      .then(response => {
+        console.log(response.data);
+        this.Users = response.data;
+        console.log(this.Users)
+        this.Pets = this.Users.map((user)=>{
+          return user.pet
+        });
+        console.log(response.data[0].pet)
+        console.log(response.data[0].pet.pictures[0].large)
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    }
+
+    }
+
+
 </script>
 
 <style scoped>
