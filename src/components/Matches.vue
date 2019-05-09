@@ -115,14 +115,14 @@
             </a>
           </router-link>
         </div>
-        <div class="content">
-          <h3 class="ui left aligned header">
+        <div class="content" >
+          <h3 class="ui left aligned header" >
             <router-link :to="{ path: 'profileuser/' + pet._id}">
               <a class="ui left aligned petname">{{pet.name}}</a>
             </router-link>
           </h3>
           <div class="ui left aligned meta">
-            <p>15 Kilometers</p>
+            <p >15 Kilometers</p>
           </div>
         </div>
       </div>

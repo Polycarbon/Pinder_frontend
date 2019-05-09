@@ -4,24 +4,31 @@
         <i class="orange star icon"></i>
         Favorites
     </p>
-    <div class= " segment">
+    <div class= " segment" style="margin-top: 10%;">
        <div class="ui grid">
           <div
-            class="eight wide column"
+            class="eight wide tablet four wide computer column"
             id="pic"
-            v-for="auser in Users"
-            v-bind:key="auser.id"
+            v-for="pet in Pets"
+            v-bind:key="pet._id"
           >
             <div class="ui centered stackable link cards">
               <div class= "ui card">
-                <div class="image">
-                  <img style="height: 60%;" v-bind:src="'http://api.adorable.io/avatars/285/'+auser.firstName+'.png'">
+                <img
+                class="ui medium image" 
+                v-if="pet.pictures===null"
+                v-bind:src="'http://api.adorable.io/avatars/285/'+pet.name+'.png'"
+              >
+              <img class="ui medium image" v-else v-bind:src="pet.pictures[0].medium">
+              <div class="ui orange bottom attached label" v-if="pet.status ==='adopted'">{{pet.status}}</div>
+              <div class="ui grey bottom attached label" v-else-if="pet.status ==='adoptable'">{{pet.status}}</div>
+            
               </div>
             </div>
             </div>
           </div>
         </div>
-  </div>
+  
   </div>
 </template>
 
@@ -32,7 +39,6 @@ import axios from 'axios'
     name: 'favorite',
   data(){
     return{
-      Users:[],
       Pets:[]
     }
   },
@@ -40,19 +46,14 @@ import axios from 'axios'
 
   },
   mounted(){
-      var url = "http://localhost:3000/user"
+      var url = "http://localhost:3000/pets";
     axios
       .get(url)
       .then(response => {
         console.log(response.data);
-        this.Users = response.data;
-        console.log(this.Users)
-        this.Pets = this.Users.map((user)=>{
-          console.log(user.pet)
-          return user.pet
-        });
-        console.log(response.data[0].pet)
-        console.log(response.data[0].pet.pictures[0].large)
+        this.Pets = response.data;
+        console.log("///////////////////////////////////////////////////");
+        console.log(response.data[0].size);
       })
       .catch(error => {
         console.log(error);
