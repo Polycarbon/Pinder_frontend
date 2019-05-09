@@ -14,16 +14,16 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="username" placeholder="Username">
+            <input type="text" name="username" placeholder="Username" v-model="Users.username">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="password" placeholder="Password" v-model="Users.password">
           </div>
         </div>
-        <div class="ui fluid large  submit button lov">Login</div>
+        <div class="ui fluid large  submit button lov" @click="login" >Login</div>
       </div>
 
       <div class="ui error message"></div>
@@ -41,7 +41,38 @@
 <script>
 /* eslint-disable */
   export default {
-    name: 'SignIn'
+    name: 'SignIn',
+    data(){
+      return{
+      Users:{
+        username: "",
+        password: ""
+      }
+      }
+    },
+    methods: {
+      createNewUser(){
+        console.log(this.Users.username)
+        console.log(this.Users.password)
+        console.log(this.Users.password)
+        var url = "http://localhost:3000/user"
+
+        let userdata={
+          username:this.Users.username,
+          password:this.Users.password
+        }
+    axios
+      .post(url,userdata)
+      .then(response=>{
+        console.log("Create Success")
+
+      })
+      
+      .catch(error => {
+        console.log(error);
+      });
+    }
+    }
   }
 </script>
 

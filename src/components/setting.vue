@@ -8,7 +8,7 @@
       </div>
     </h2>
       
-        <div class="vertical-menu segment">
+        <!-- <div class="vertical-menu segment">
           <div class="ui form">
   <div class="two fields">
     <div class="field ui left header aligned">
@@ -47,7 +47,7 @@
 </div>
         
         <!-- <a href="#"> -->
-            <div class="ui left aligned header">Maximum Distance (KM)</div>
+            <!-- <div class="ui left aligned header">Maximum Distance (KM)</div>
             <div class="slidercontainer">
                 <form oninput="result.value=parseInt(b.value)">
                     <input type="range" min="1" max="100" value="" class="slider" id="b" >
@@ -58,25 +58,123 @@
             </div>
                     <!-- </a> -->
         
-        <a href="#"><output id="myRange" ></output></a>
+        <!-- <a href="#"><output id="myRange" ></output></a> --> 
+        
+<div class="ui form header ">
+  <div class="inline fields">
+    <label>Gender</label>
+    <div class="field " style ="margin-left:11.2%">
+      <div class="ui radio checkbox">
+        <input type="radio"  name="fr" checked="checked">
+        <label>Male</label>
+      </div>
+    </div>
+    <div class="field" style ="margin-left:19%">
+      <div class="ui radio checkbox">
+        <input type="radio" name="fr">
+        <label>Female</label>
+      </div>
+    </div>
+  
+    
+    
+  </div>
+</div>
+<div class="ui form header">
+  <div class="inline fields">
+    <label>Type</label>
+    <div class="field" style ="margin-left:15%">
+      <div class="ui radio checkbox">
+        <input type="radio" name="frequency" checked="checked">
+        <label>Dog</label>
+      </div>
+    </div>
+    <div class="field" style ="margin-left:20%">
+      <div class="ui radio checkbox">
+        <input type="radio" name="frequency">
+        <label>Cat</label>
+      </div>
+    </div>
+    <div class="field " style ="margin-left:20%" >
+      <div class="ui radio checkbox">
+        <input type="radio" name="frequency" >
+        <label>Exotic</label>
+      </div>
+    </div>
+    
+
+  </div>
+</div>
+<div class="ui form header">
+  <div class="inline fields">
+    <label>Age</label>
+    <div class="field" style ="margin-left:16.2%">
+      <div class="ui radio checkbox">
+        <input type="radio" name="frequen" checked="checked">
+        <label>Baby</label>
+      </div>
+    </div>
+    <div class="field" style ="margin-left:19%">
+      <div class="ui radio checkbox">
+        <input type="radio" name="frequen">
+        <label>Adult</label>
+      </div>
+    </div>
+    <div class="field" style ="margin-left:18%">
+      <div class="ui radio checkbox">
+        <input type="radio" name="frequen">
+        <label>Senior</label>
+      </div>
+    </div>
+    
+    
+  </div>
+</div>
+<div class="ui form header " >
+  <div class="inline fields">
+    <label>Size</label>
+    <div class="field " style ="margin-left:16%">
+      <div class="ui radio checkbox">
+        <input type="radio"  name="fre" checked="checked">
+        <label>Small</label>
+      </div>
+    </div>
+    <div class="field" style ="margin-left:4%">
+      <div class="ui radio checkbox">
+        <input type="radio" name="fre">
+        <label>Medium</label>
+      </div>
+    </div>
+    <div class="field" style ="margin-left:4%">
+      <div class="ui radio checkbox">
+        <input type="radio" name="fre">
+        <label>Large</label>
+      </div>
+    </div>
+    <div class="field" style ="margin-left:4%">
+      <div class="ui radio checkbox ">
+        <input type="radio" name="fre">
+        <label>Extra Large</label>
+      </div>
+    </div>
+    
+    
+  </div>
+</div>
         <button class="ui  button orange">
   Save
 </button>
 <button class="ui button" onclick="location.href='#/profile'">
   Discard
 </button>
-        </div>
+
+        
         
     </div>
 </template>
 <script>
 export default {
-  methods:{
-      getUserById:{
-        
-      }
-
-  }
+  methods: {},
 };
 </script>
 
@@ -136,5 +234,6 @@ export default {
   background: #4caf50;
   cursor: pointer;
 }
+
 </style>
 

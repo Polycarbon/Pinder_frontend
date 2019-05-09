@@ -12,24 +12,19 @@
     </h2>
     <form class="ui large form">
       <div class="ui stacked segment">
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user outline icon"></i>
-            <input type="text" name="email" placeholder="E-mail address" >
-          </div>
-        </div>
-        <div class="field">
+         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="user" placeholder="Username">
+            <input type="password" name="firstname" placeholder="Firstname">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password">
+            <i class="home icon"></i>
+            <input type="password" name="lastname" placeholder="Lastname">
           </div>
         </div>
+        
         <div class="field">
           <div class="ui left icon input">
             <i class="envelope icon"></i>
@@ -43,18 +38,8 @@
           </div>
         </div>
         
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <input type="password" name="firstname" placeholder="Firstname">
-          </div>
-        </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="home icon"></i>
-            <input type="password" name="lastname" placeholder="Lastname">
-          </div>
-        </div>
+       
+        
         <div class="field">
           <div class="ui left icon input">
             <i class="image icon"></i>
@@ -64,7 +49,7 @@
         <button class="ui  button orange">
   Save
 </button>
-<button class="ui button">
+<button class="ui button" onclick="location.href='#/profile'">
   Discard
 </button>
       </div>

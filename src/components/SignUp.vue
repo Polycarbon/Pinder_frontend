@@ -20,13 +20,13 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password" v-model="Users.password">
+            <input type="password" name="password" placeholder="Password" id="checkpass1" v-model="Users.password">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="repassword" placeholder="Re-Enter-Password" v-model="Users.password">
+            <input type="password" name="repassword" placeholder="Re-Enter-Password" id="checkpass2"  v-model="Users.reenter">
           </div>
         </div>
     
@@ -62,6 +62,10 @@ import axios from "axios"
     },
     methods: {
       createNewUser(){
+        
+
+        if (this.Users.password === this.Users.reenter) {
+
         console.log(this.Users.username)
         console.log(this.Users.password)
         console.log(this.Users.password)
@@ -81,11 +85,20 @@ import axios from "axios"
       .catch(error => {
         console.log(error);
       });
+
+} else {
+    // do something if the first input is less than the second
+        alert("Password Doesn't Match")
+
+
     }
 
          
           // alert(this.username)
 
+      },
+ 
+        
       }
     
   }
