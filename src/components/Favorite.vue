@@ -19,7 +19,7 @@
                 v-if="pet.pictures===null"
                 v-bind:src="'http://api.adorable.io/avatars/285/'+pet.name+'.png'"
               >
-              <img class="ui medium image" v-else v-bind:src="pet.pictures[0].medium">
+              <img class="ui medium image" v-else v-bind:src="pet.pictures[0].large">
               <div class="ui orange bottom attached label" v-if="pet.status ==='adopted'">{{pet.status}}</div>
               <div class="ui grey bottom attached label" v-else-if="pet.status ==='adoptable'">{{pet.status}}</div>
             

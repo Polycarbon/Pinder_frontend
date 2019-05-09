@@ -104,7 +104,7 @@
     >
       <div class="ui card">
         <div class="medium image">
-          <router-link :to="{ path: 'profileuser/' + pet._id}">
+          <router-link :to="{ path: 'profilepet/' + pet._id}">
             <a class="img">
               <img
                 class="ui medium image"
@@ -117,7 +117,7 @@
         </div>
         <div class="content" >
           <h3 class="ui left aligned header" >
-            <router-link :to="{ path: 'profileuser/' + pet._id}">
+            <router-link :to="{ path: 'profilepet/' + pet._id}">
               <a class="ui left aligned petname">{{pet.name}}</a>
             </router-link>
           </h3>
