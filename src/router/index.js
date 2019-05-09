@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '../store'
 import Matches from '@/components/Matches'
-import Profile from '@/components/Profile'
 import Profilepet from '@/components/Profilepet'
 import Favorite from '@/components/Favorite'
 import SignIn from '@/components/SignIn'
@@ -80,6 +80,18 @@ let router = new Router({
       }
     }
   ]
-})
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters['User/isLoggedIn']) {
+      next();
+      return
+    }
+    next('/login')
+  } else {
+    next()
+  }
+});
 
 export default router

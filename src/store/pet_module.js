@@ -17,14 +17,12 @@ const petModule = {
   },
   actions: {
     async getPets({commit, state}, message) {
-      let response = await PetsService.getPets()
+      let response = await PetsService.getAll()
       commit('SET_PETS', response.data)
     },
-    setMessage({commit, state}, message) {
-      commit('SET_MESSAGE', message)
-    },
-    sendMessage({commit, state}, message) {
-      PetsService.sendMessage(message)
+    async getById({commit, state}, id) {
+      let response = await PetsService.getById(id);
+      return response.data
     }
   },
   getters: {

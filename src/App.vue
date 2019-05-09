@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="ui center aligned container">
-      <div class="ui three columns grid secondary pointing icon menu">
+      <div class="ui three columns grid secondary pointing icon menu" v-if="isLogin">
         <a class="column middle aligned item" href="#/profile">
           <i class="big user orange icon"></i>
         </a>
@@ -18,8 +18,14 @@
 </template>
 
 <script>
+  import {mapGetters, mapActions} from 'vuex'
 export default {
-  name: 'App'
+  name: 'App',
+  computed: {
+    ...mapGetters({
+      isLogin: 'User/isLoggedIn'
+    })
+  }
 }
 </script>
 

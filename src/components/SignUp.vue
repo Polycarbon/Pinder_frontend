@@ -13,32 +13,33 @@
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">
+            <i class="mail icon"></i>
+            <input type="email" name="email" id="email" placeholder="example@mail.com" v-model="email">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="username" id="username" placeholder="Username" v-model="Users.username">
+            <input type="text" name="username" id="username" placeholder="Username" v-model="username">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password" id="checkpass1" v-model="Users.password">
+            <input type="password" name="password" placeholder="Password" id="checkpass1" v-model="password">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="repassword" placeholder="Re-Enter-Password" id="checkpass2"  v-model="Users.reenter">
+            <input type="password" name="repassword" placeholder="Re-Enter-Password" id="checkpass2"
+                   v-model="cf_password">
           </div>
         </div>
-    
-        
-        <div class="ui fluid large submit button lov" @click="createNewUser">Sign Up</div>
-        
+        <div class="ui fluid large submit button lov" @click="submit">Sign Up</div>
       </div>
-
       <div class="ui error message"></div>
-
     </form>
-
     <div class="ui message">
       Already have an account? <a href="#/signin">Sign In</a>
     </div>
@@ -49,58 +50,39 @@
 
 <script>
 /* eslint-disable */
-import axios from "axios"
+import {mapGetters, mapActions} from 'vuex'
   export default {
     name: 'SignUp',
     data(){
       return{
-      Users:{
-        username: "",
-        password: ""
-      }
+        email: null,
+        username: null,
+        password: null,
+        cf_password: null
       }
     },
     methods: {
-      createNewUser(){
-        
+      ...mapActions({
+        register: 'User/register'
+      }),
+      submit() {
+        if (this.password === this.cf_password) {
+          let data = {
+            email: this.email,
+            username: this.username,
+            password: this.password
+          };
+          this.register(data).then(res => {
+            alert("register complete")
+          }).catch(err => {
+            alert("username or email already exist.")
+          })
 
-        if (this.Users.password === this.Users.reenter) {
-
-        console.log(this.Users.username)
-        console.log(this.Users.password)
-        console.log(this.Users.password)
-        var url = "http://localhost:3000/user"
-
-        let userdata={
-          username:this.Users.username,
-          password:this.Users.password
+        } else {
+          alert("password not match")
         }
-    axios
-      .post(url,userdata)
-      .then(response=>{
-        console.log("Create Success")
-
-      })
-      
-      .catch(error => {
-        console.log(error);
-      });
-
-} else {
-    // do something if the first input is less than the second
-        alert("Password Doesn't Match")
-
-
-    }
-
-         
-          // alert(this.username)
-
-      },
- 
-        
       }
-    
+    }
   }
 </script>
 

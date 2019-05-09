@@ -3,39 +3,70 @@ import {UserService} from '../resource'
 const userModule = {
   namespaced: true,
   state: {
-    name: 'Wisarut Phuvanantanond',
-    user: null
+    status: '',
+    token: localStorage.getItem('token') || '',
+    user: {}
   },
   mutations: {
-    SET_NAME(state, name) {
-      state.name = name
+    auth_request(state) {
+      state.status = 'loading'
     },
-    SET_USER(state, user) {
+    auth_success(state, token, user) {
+      state.status = 'success'
+      state.token = token
       state.user = user
-    }
+    },
+    auth_error(state) {
+      state.status = 'error'
+    },
+    logout(state) {
+      state.status = ''
+      state.token = ''
+    },
   },
   actions: {
-    setName({commit, state}, name) {
-      commit('SET_NAME', name)
-    },
-    async createUser({commit, state}, data) {
-      let result = await UserService.createUser(data)
-      commit('SET_NAME', result.name)
-    },
     async fetchUser({commit, state}, data) {
       let result = await UserService.getById(data)
-      commit('SET_USER', result.data)
+      // commit('SET_USER', result.data)
     },
-    async login({commit, state}, data) {
-      let result = await UserService.getById(data)
-      commit('SET_USER', result.data)
+    login({commit}, user) {
+      commit('auth_request')
+      UserService.verifyUser(user)
+        .then(res => {
+          const token = res.data.token;
+          const user = res.data.user;
+          localStorage.setItem('token', token);
+          console.log(res.data)
+          // Add the following line:
+          UserService.setHeader({
+            key: 'Authorization',
+            value: token
+          });
+          commit('auth_success', token, user)
+        })
+        .catch(err => {
+          commit('auth_error')
+          localStorage.removeItem('token')
+        })
+    },
+    async register({commit}, user) {
+      return await UserService.createUser(user);
+    },
+    logout({commit}) {
+      return new Promise((resolve, reject) => {
+        commit('logout')
+        localStorage.removeItem('token')
+        delete axios.defaults.headers.common['Authorization']
+        resolve()
+      })
     }
   },
   getters: {
-    getName(state) {
-      return state.name
-    }
+    isLoggedIn: state => {
+      return !!state.token
+    },
+    authStatus: state => state.status,
   }
-}
+};
 
 export default userModule

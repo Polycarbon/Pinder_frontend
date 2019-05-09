@@ -5,9 +5,14 @@ class PetProvider extends HttpRequest {
     return this.create('/send-message', data)
   }
 
-  getPets() {
+  getAll() {
     return this.fetch('/pets')
   }
+
+  getById(id) {
+    return this.fetch('/pets/' + id)
+  }
+
 }
 
 export default PetProvider
