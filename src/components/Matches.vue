@@ -1,8 +1,7 @@
 <template>
   <!-- <div class="ui segment" style="margin-bottom: 5%;"> -->
   <div class="matches" style="margin-top: 10%;">
-    <div class="button" @click="pet('5cd2d4282791922ce03472e2')">test</div>
-    <div class="ui centered link cards" style="margin-bottom: 3%" v-for="pet in Pets2" v-bind:key="pet._id">
+    <div class="ui centered link cards" style="margin-bottom: 3%" v-for="pet in Pets" v-bind:key="pet._id">
       <div class="ui card">
         <div class="medium image">
           <router-link :to="{ path: 'profileuser/' + pet._id}">
@@ -65,6 +64,7 @@
 
 <script>
 /* eslint-disable */
+import axios from "axios";
 import {mapGetters, mapActions} from 'vuex'
 export default {
   name: "Match",
@@ -76,12 +76,11 @@ export default {
   computed: {
     ...mapGetters({
       Pets2: 'Pet/getPets'
-    })
+    }),
   },
   methods: {
     ...mapActions({
-      fetchPets: 'Pet/getPets',
-      pet: 'Pet/getById'
+      fetchPets: 'Pet/getPets'
     }),
     popupMatch() {
       $(".ui.modal").modal("show");
