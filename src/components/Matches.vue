@@ -4,7 +4,7 @@
     <div class="ui centered link cards" style="margin-bottom: 3%" v-for="pet in Pets" v-bind:key="pet._id">
       <div class="ui card">
         <div class="medium image">
-          <router-link :to="{ path: 'profileuser/' + pet._id}">
+          <router-link :to="{ path: 'profilepet/' + pet._id}">
             <a class="img">
               <img
                 class="ui medium image"
@@ -70,12 +70,11 @@ export default {
   name: "Match",
   data() {
     return {
-      Pets: [],
     }
   },
   computed: {
     ...mapGetters({
-      Pets2: 'Pet/getPets'
+      Pets: 'Pet/getPets'
     }),
   },
   methods: {

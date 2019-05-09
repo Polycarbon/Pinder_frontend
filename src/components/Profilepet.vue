@@ -2,9 +2,9 @@
   <div class="ui segment">
     <div class="ui segment">
       <div class="ui slide masked reveal centered aligned large image">
-        <img class="visible content" v-if="Pets.pictures[0]===null" :src="'http://api.adorable.io/avatars/285/'+pet.firstName+'.png'">
-        <img class="visible content" v-else  :src="Pets.pictures[0].large">
-        <img class="hidden content" v-if="Pets.pictures[1].large!==null"  :src="Pets.pictures[1].large">
+        <img class="ui medium centered image" v-if="Pets.pictures===null" v-bind:src="'http://api.adorable.io/avatars/285/'+Pets.name+'.png'">
+        <img class="ui medium centered image" v-else  v-bind:src="Pets.pictures[0].large">
+        <!-- <img class="hidden content" v-if="Pets.pictures[1].large!==null"  :src="Pets.pictures[1].large"> -->
       </div>
     </div>
     <div class="ui segment">
@@ -107,16 +107,16 @@ export default {
     return {
       Users: [],
       Pets:[{
-        name: "",
-        size: "",
-        description: "",
-        pet_id: "",
-        type: "",
-        species: "",
-        age: "",
-        gender: "",
-        status: "",
-        contact: ""
+        // name: "",
+        // size: "",
+        // description: "",
+        // pet_id: "",
+        // type: "",
+        // species: "",
+        // age: "",
+        // gender: "",
+        // status: "",
+        // contact: ""
       }]
     };
   },
@@ -127,7 +127,7 @@ export default {
     popupUnmatch() {}
   },
   mounted(){
-     var url = "http://localhost:3000/user/"
+     var url = "http://localhost:3000/pets/"
     axios
       .get(url + this.$route.params.userId)
       .then(response => {
