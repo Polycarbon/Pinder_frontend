@@ -13,7 +13,7 @@
         Profile
       </p>
         <h2 class="ui left aligned header">{{Pets.name}} , {{Pets.age}}</h2>
-        
+
         <h3 class="ui left aligned header">About {{Pets.name}}</h3>
         <p v-if="Pets.description!==null">{{Pets.description}}</p>
         <p v-else> - </p>
@@ -37,7 +37,7 @@
         <div class="ui vertical divider">
           <i class="ui user icon"></i>
         </div> -->
-      
+
       <p class="ui horizontal divider orange header">
         <i class="address book orange icon"></i>
         Contact
@@ -102,7 +102,7 @@
 /* eslint-disable */
 import axios from "axios";
 export default {
-  name: "Profileuser",
+  name: "Profilepet",
   data() {
     return {
       Users: [],
@@ -133,7 +133,7 @@ export default {
       .then(response => {
         console.log(response.data);
         this.Pets = response.data;
-        
+
       })
       .catch(error => {
         console.log(error);
