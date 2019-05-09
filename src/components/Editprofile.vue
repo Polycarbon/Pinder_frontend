@@ -15,7 +15,7 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user outline icon"></i>
-            <input type="text" name="email" placeholder="E-mail address">
+            <input type="text" name="email" placeholder="E-mail address" >
           </div>
         </div>
         <div class="field">

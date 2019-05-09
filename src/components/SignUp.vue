@@ -3,7 +3,7 @@
   <div class="ui middle aligned center aligned grid">
   <div class="column">
     <h2 class="ui teal image header">
-      <img src="https://i.ibb.co/2qhS8Yv/social-34-5126-removebg.png" class="image">
+      <img src="https://i.ibb.co/2qhS8Yv/social-34-5126-removebg.png" class="image" >
       <br>
       <div class="content">
         SignUp
@@ -14,24 +14,25 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="username" placeholder="Username">
+            <input type="text" name="username" id="username" placeholder="Username" v-model="Users.username">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="password" placeholder="Password" v-model="Users.password">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="repassword" placeholder="Re-Enter-Password">
+            <input type="password" name="repassword" placeholder="Re-Enter-Password" v-model="Users.password">
           </div>
         </div>
     
         
-        <div class="ui fluid large submit button lov">Sign Up</div>
+        <div class="ui fluid large submit button lov" @click="createNewUser">Sign Up</div>
+        
       </div>
 
       <div class="ui error message"></div>
@@ -48,8 +49,45 @@
 
 <script>
 /* eslint-disable */
+import axios from "axios"
   export default {
-    name: 'SignUp'
+    name: 'SignUp',
+    data(){
+      return{
+      Users:{
+        username: "",
+        password: ""
+      }
+      }
+    },
+    methods: {
+      createNewUser(){
+        console.log(this.Users.username)
+        console.log(this.Users.password)
+        console.log(this.Users.password)
+        var url = "http://localhost:3000/user"
+
+        let userdata={
+          username:this.Users.username,
+          password:this.Users.password
+        }
+    axios
+      .post(url,userdata)
+      .then(response=>{
+        console.log("Create Success")
+
+      })
+      
+      .catch(error => {
+        console.log(error);
+      });
+    }
+
+         
+          // alert(this.username)
+
+      }
+    
   }
 </script>
 

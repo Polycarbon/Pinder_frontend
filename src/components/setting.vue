@@ -1,25 +1,83 @@
 <template>
     <div class="ui raised very padded text container segment">
+       <h2 class="ui  image header">
+      <img src="https://i.ibb.co/2qhS8Yv/social-34-5126-removebg.png" class="image">
+      <br>
+      <div class="content ">
+        Setting
+      </div>
+    </h2>
+      
         <div class="vertical-menu segment">
-        <a href="#" class="active">Home</a>
-        <a href="#">Phone Number</a>
-        <a href="#">Email</a>
-        <a href="#">Location</a>
-        <a href="#">
-            <div class="slidecontainer">Maximum Distance (KM)
+          <div class="ui form">
+  <div class="two fields">
+    <div class="field ui left header aligned">
+      <label>Display Name</label>
+      <input placeholder="Display Name" type="text">
+    </div>
+    <div class="field ui left header aligned">
+      <label>Location</label>
+      <input placeholder="Location" type="text">
+    </div>
+  </div>
+ <div class="field ui left header aligned">
+    <select>
+      <option value="">Gender</option>
+      <option value="1">Male</option>
+      <option value="0">Female</option>
+    </select>
+  </div>
+  <div class="ui form">
+  <div class="three fields">
+    <div class="field ui left header aligned">
+      <label>Phone Number</label>
+      <input type="text" placeholder="Phone Number">
+    </div>
+    <div class="field ui left header aligned">
+      <label>Email</label>
+      <input type="text" placeholder="Email">
+    </div>
+    <div class="field ui left header aligned">
+      <label>Address</label>
+      <input type="text" placeholder="Address">
+    </div>
+  </div>
+</div>
+  
+</div>
+        
+        <!-- <a href="#"> -->
+            <div class="ui left aligned header">Maximum Distance (KM)</div>
+            <div class="slidercontainer">
                 <form oninput="result.value=parseInt(b.value)">
                     <input type="range" min="1" max="100" value="" class="slider" id="b" >
-                    <output name="result"></output>
+                    <output name="result" > </output>
+                    km
                 </form>
             </div>
-                    </a>
-        <a href="#">Gender</a>
+            </div>
+                    <!-- </a> -->
+        
         <a href="#"><output id="myRange" ></output></a>
+        <button class="ui  button orange">
+  Save
+</button>
+<button class="ui button" onclick="location.href='#/profile'">
+  Discard
+</button>
         </div>
+        
     </div>
 </template>
 <script>
-export default {};
+export default {
+  methods:{
+      getUserById:{
+        
+      }
+
+  }
+};
 </script>
 
 <style>

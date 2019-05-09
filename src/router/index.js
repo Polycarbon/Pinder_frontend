@@ -6,9 +6,9 @@ import Profilepet from '@/components/Profilepet'
 import Favorite from '@/components/Favorite'
 import SignIn from '@/components/SignIn'
 import SignUp from '@/components/SignUp'
-import MainProfile from '@/components/MainProfile'
-import edit from '@/components/edit'
-import setting from '@/components/setting'
+import Profileuser from '@/components/Profileuser'
+import Editprofile from '@/components/Editprofile'
+import Setting from '@/components/Setting'
 
 Vue.use(Router)
 let router = new Router({
@@ -41,8 +41,8 @@ let router = new Router({
     },
     {
       path: '/profile',
-      name: 'MainProfile',
-      component: MainProfile,
+      name: 'Profileuser',
+      component: Profileuser,
       meta: {
         requiresAuth: true
       }
@@ -65,16 +65,16 @@ let router = new Router({
     },
     {
       path: '/edit',
-      name: 'edit',
-      component: edit,
+      name: 'Editprofile',
+      component: Editprofile,
       meta: {
         requiresAuth: true
       }
     },
     {
       path: '/setting',
-      name: 'setting',
-      component: setting,
+      name: 'Setting',
+      component: Setting,
       meta: {
         requiresAuth: true
       }
