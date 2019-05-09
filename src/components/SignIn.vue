@@ -3,7 +3,7 @@
     <div class="ui middle aligned center aligned grid">
   <div class="column">
     <h2 class="ui  image header">
-      <img src="http://pluspng.com/img-png/tinder-png-png-ico-512.png" class="image">
+      <img src="https://i.ibb.co/2qhS8Yv/social-34-5126-removebg.png" class="image">
       <br>
       <div class="content ">
         Log-in to your account
@@ -14,7 +14,7 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="email" placeholder="E-mail address">
+            <input type="text" name="username" placeholder="Username">
           </div>
         </div>
         <div class="field">

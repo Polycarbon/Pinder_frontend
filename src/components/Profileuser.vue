@@ -3,6 +3,7 @@
     <div>
         <div class="ui  very  container centered aligned">
     <img class="ui medium circular image centered" src=" https://semantic-ui.com/images/avatar/large/daniel.jpg">
+    <a href="#"><i class="plus circle icon orange"></i></a>
         </div>
      <div class="meta">
         <a>Friends</a>
@@ -31,8 +32,19 @@
 </template>
 <script>
 export default {
-    
+    methods: {
+      findById(){
+
+
+
+      }
+
+      
+    },
 }
+
+
+
 </script>
 <style>
 .divformain {
