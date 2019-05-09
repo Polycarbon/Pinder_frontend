@@ -4,7 +4,7 @@
         <i class="orange star icon"></i>
         Favorites
     </p>
-    <div class= "ui segment">
+    <div class= " segment">
        <div class="ui grid">
           <div
             class="eight wide column"
@@ -13,10 +13,11 @@
             v-bind:key="auser.id"
           >
             <div class="ui centered link cards">
+              <div class= "ui card">
                 <div class="image">
                   <img style="height: 60%;" v-bind:src="'http://api.adorable.io/avatars/285/'+auser.firstName+'.png'">
               </div>
-              <div class="ui button">cccc</div>
+            </div>
             </div>
           </div>
         </div>

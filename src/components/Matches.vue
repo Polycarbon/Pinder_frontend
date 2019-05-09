@@ -1,7 +1,8 @@
 <template>
-  <div class="ui segment">
-      <div class="ui segment">
+  <!-- <div class="ui segment" style="margin-bottom: 5%;"> -->
+    <div class = "matches" style="margin-top: 10%;">
       <div class="ui centered link cards" style="margin-bottom: 3%" v-for="pet in Pets" v-bind:key="pet._id">
+          <div class="ui card">
           <div class="medium image" >
             <router-link  :to="{ path: 'profileuser/' + pet._id}">
             <a class="img">
@@ -23,6 +24,7 @@
           </div>
           </div>
       </div>
+      
       </div>
       <div class="ui basic red button" @click="popupUnmatch">
         <i class="close icon" style="margin-left: 10%"></i>
@@ -86,12 +88,6 @@
       .get(url)
       .then(response => {
         console.log(response.data);
-        // this.Users = response.data;
-        // console.log(this.Users)
-        // this.Pets = this.Users.map((user)=>{
-        //   //console.log(user.pet)
-        //   return user.pet
-        // });
         this.Pets = response.data
         console.log("///////////////////////////////////////////////////")
         console.log(response.data[0].size)
