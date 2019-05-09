@@ -1,7 +1,6 @@
 <template>
   <!-- <div class="ui segment" style="margin-bottom: 5%;"> -->
   <div class="matches" style="margin-top: 10%;">
-    <p>{{Pets2}}</p>
     <div class="ui centered link cards" style="margin-bottom: 3%" v-for="pet in Pets" v-bind:key="pet._id">
       <div class="ui card">
         <div class="medium image">
@@ -66,6 +65,7 @@
 <script>
 /* eslint-disable */
 import axios from "axios";
+import {mapGetters, mapActions} from 'vuex'
 export default {
   name: "Match",
   data() {

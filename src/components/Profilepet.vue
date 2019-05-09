@@ -102,7 +102,7 @@
 /* eslint-disable */
 import axios from "axios";
 export default {
-  name: "Profileuser",
+  name: "Profilepet",
   data() {
     return {
       Users: [],

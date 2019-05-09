@@ -10,7 +10,7 @@
       </div>
       <div class="description">
         Matthew is an interior designer living in New York.
-      
+
     </div>
     <div class="extra content">
       <span class="right floated">
@@ -32,15 +32,27 @@
 </template>
 <script>
 export default {
-    methods: {
-      findById(){
+  name: "ProfileUser",
+  data() {
+  },
+  computed: {
+    ...mapGetters({
+      User: 'User/getById'
+    }),
+  },
+  mounted() {
+    var url = "http://localhost:3000/user/"
+    axios
+      .get(url + this.$route.params.userId)
+      .then(response => {
+        console.log(response.data);
+        this.Pets = response.data;
 
-
-
-      }
-
-      
-    },
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 }
 
 
@@ -56,12 +68,12 @@ export default {
 }
 .setting{
   color:orange;
- 
+
 
 }
 .edit{
   color:orange;
- 
+
 
 }
 
