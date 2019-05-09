@@ -12,7 +12,7 @@
             v-for="auser in Users"
             v-bind:key="auser.id"
           >
-            <div class="ui centered link cards">
+            <div class="ui centered stackable link cards">
               <div class= "ui card">
                 <div class="image">
                   <img style="height: 60%;" v-bind:src="'http://api.adorable.io/avatars/285/'+auser.firstName+'.png'">
