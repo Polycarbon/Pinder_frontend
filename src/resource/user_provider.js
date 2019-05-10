@@ -27,6 +27,10 @@ class PersonProvider extends HttpRequest {
   setProfile(data) {
     return this.create('/user/update', data)
   }
+
+  setting(data) {
+    return this.create('/user/update', data)
+  }
 }
 
 export default PersonProvider

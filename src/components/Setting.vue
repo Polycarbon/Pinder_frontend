@@ -50,12 +50,8 @@
         </div>
       </div>
       <br>
-      <!-- {{selectedGender}}
-      {{selectedType}}
-      {{selectedAge}}
-      {{selectedSize}} -->
       <router-link :to="{ path: 'profile/'}">
-        <button class="ui button orange" type="submit" @click="addtoPet">Save</button>
+        <button class="ui button orange" type="submit" @click="submit">Save</button>
         <button class="ui button" type="submit" onclick="window.location.href ='#/profile'">Discard</button>
       </router-link>
     </div>
@@ -63,7 +59,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import {mapGetters, mapActions} from 'vuex'
 export default {
   name: 'setting',
@@ -77,17 +72,24 @@ export default {
     }
   },
   methods: {
-    addtoPet(){
-      let dataUser = {
-        gender: this.selectedGender,
-        type: this.selectedType,
-        age: this.selectedAge,
-        size: this.selectedSize
+      ...mapActions({
+        setProfile: "User/setting"
+      }),
+  submit() {
+      let data = {
+        $set: {
+          gender: this.selectedGender,
+          type: this.selectedType,
+          age: this.selectedAge,
+          size: this.selectedSize
+        }
       };
-      console.log(dataUser)
+      console.log(data)
       console.log(gender)
       console.log(this.selectedGender)
-
+      this.setProfile(data)
+      this.$router.push('/profile')
+      window.location.reload();
     }
   }
 };
@@ -123,36 +125,6 @@ export default {
 
 .slidecontainer {
   width: 100%; /* Width of the outside container */
-}
-
-.slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 15px;
-  border-radius: 5px;
-  background: orange;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: orangered;
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #4caf50;
-  cursor: pointer;
 }
 </style>
 

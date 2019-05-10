@@ -9,34 +9,63 @@
             Your profile
           </div>
         </h2>
+        <br><br><br>
+
         <form class="ui large form" id="profileForm">
-          <div class="field">
+          <!-- firstName -->
+          <div class="field"  v-if="checkFirstname == true">
             <div class="ui left icon input">
               <i class="user icon"></i>
               <input type="text" name="firstname" placeholder="Firstname" v-model="firstName">
             </div>
           </div>
-          <div class="field">
+          <div class="field error"  v-if="checkFirstname == false">
             <div class="ui left icon input">
-              <i class="home icon"></i>
+              <i class="user icon"></i>
+              <input type="text" name="firstname" placeholder="Firstname" v-model="firstName">
+            </div>
+          </div>
+          <!-- lastName -->
+          <div class="field" v-if="checkLastname == true">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
               <input type="text" name="lastname" placeholder="Lastname" v-model="lastName">
             </div>
           </div>
-          <div class="field">
+          <div class="field error" v-if="checkLastname == false">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <input type="text" name="lastname" placeholder="Lastname" v-model="lastName">
+            </div>
+          </div>
+          <!-- postcode -->
+          <div class="field" v-if="checkPostcode == true">
             <div class="ui left icon input">
               <i class="envelope icon"></i>
               <input type="text" name="postcode" placeholder="Postcode" v-model="postCode">
             </div>
           </div>
-          <div class="field">
+          <div class="field error" v-if="checkPostcode == false">
+            <div class="ui left icon input">
+              <i class="envelope icon"></i>
+              <input type="text" name="postcode" placeholder="Postcode" v-model="postCode">
+            </div>
+          </div>
+          <!-- phoneNumber -->
+          <div class="field" v-if="checkPhone == true">
             <div class="ui left icon input">
               <i class="phone icon"></i>
               <input type="text" name="phone" placeholder="Phone No." v-model="phoneNumber">
             </div>
           </div>
-          <div class="ui error message">
-          </div>
+          <div class="field error" v-if="checkPhone == false">
+            <div class="ui left icon input">
+              <i class="phone icon"></i>
+              <input type="text" name="phone" placeholder="Phone No." v-model="phoneNumber">
+            </div>
+          </div>  
         </form>
+        <br><br>
         <button class="ui orange submit button" v-on:click="submit">
           Submit
         </button>
@@ -52,13 +81,18 @@
         firstName: null,
         lastName: null,
         phoneNumber: null,
-        postCode: null
+        postCode: null,
+        checkFirstname: true,
+        checkLastname: true,
+        checkPostcode: true,
+        checkPhone: true
       }
     },
     methods: {
       ...mapActions({
         setProfile: "User/setProfile"
       }),
+      // submit data and go to matches path
       submit() {
         let data = {
           $set: {
@@ -68,8 +102,27 @@
             postCode: this.postCode
           }
         };
+        if (
+        this.firstName != null &&
+        this.lastName != null &&
+        this.phoneNumber != null &&
+        this.postCode != null
+      ) {
         this.setProfile(data)
-        this.$router.push('/matches')
+
+        this.checkFirstname = true
+        this.checkLastname = true
+        this.checkPostcode = true
+        this.checkPhone = true
+
+        this.$router.push('/profile')
+        window.location.reload();
+        } else {
+        if (this.firstName == null) this.checkFirstname = false;
+        if (this.lastName == null) this.checkLastname = false;
+        if (this.phoneNumber == null) this.checkPhone = false;
+        if (this.postCode == null) this.checkPostcode = false;
+      }
       }
     }
   };

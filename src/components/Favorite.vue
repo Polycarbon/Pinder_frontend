@@ -21,7 +21,7 @@
                   v-if="pet.pictures===null"
                   v-bind:src="'http://api.adorable.io/avatars/285/'+pet.name+'.png'"
               >
-              <img class="ui medium image" v-else v-bind:src="pet.pictures[0].large">
+              <img class="ui medium image" style="height: 175px;" v-else v-bind:src="pet.pictures[0].large">
               <div class="ui orange bottom attached label" v-if="pet.status ==='adopted'">{{pet.status}}</div>
               <div class="ui grey bottom attached label" v-else-if="pet.status ==='adoptable'">{{pet.status}}</div>
 
@@ -56,6 +56,7 @@ import {mapGetters, mapActions} from 'vuex'
       })
   },
     async mounted() {
+      // show data that u fav
       let data = await this.getFavPet({list: this.favList})
       this.Pets = data
 
@@ -65,9 +66,22 @@ import {mapGetters, mapActions} from 'vuex'
 </script>
 
 <style scoped>
-  #chatlist {
-    text-align: left;
-    margin-left: 10%;
-    margin-right: 10%;
+  #favourite {
+    margin-top: 100px;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  body {
+    background-color: #DADADA;
+    margin-top: 100px;
+  }
+
+  body > .grid {
+    height: 100%;
+  }
+
+  .column {
+    max-width: 450px;
   }
 </style>

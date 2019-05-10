@@ -96,6 +96,19 @@ const userModule = {
       };
       let msg = await UserService.setProfile(p);
 
+    },
+    async setting({state, commit}, data) {
+      let s = {
+        criteria: {
+          _id: state.user._id
+        },
+        data: data,
+        opts: {
+          multi: false
+        }
+      };
+      let msg = await UserService.setting(s);
+
     }
 
   },

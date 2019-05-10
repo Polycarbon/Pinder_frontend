@@ -1,11 +1,10 @@
 <template>
   <div class="matches" style="margin-top: 10%;">
-    <!-- {{currentPet.name}} -->
     <div v-if="currentPet!== null">
       <div v-if="i < Pets.length">
-        <!-- {{currentPet.name}} -->
         <div class="ui centered card" style="margin-bottom: 3%">
           <div class="medium image">
+            <!-- path to profile pet page -->
             <router-link :to="{ path: 'profilepet/' + currentPet._id}">
               <a class="img">
                 <img
@@ -34,10 +33,12 @@
             </div>
           </div>
         </div>
-        <div class="ui basic red button" @click="dislike">
+        <!-- dislike button -->
+        <div class="ui grey button" @click="dislike">
           <i class="close icon" style="margin-left: 10%"></i>
         </div>
-        <div class="ui basic green button" @click="like">
+        <!-- like button -->
+        <div class="ui orange button" @click="like">
           <i class="thumbs up outline icon" style="margin-left: 10%"></i>
         </div>
       </div>
@@ -74,10 +75,11 @@ export default {
     }),
     like() {
       this.nextPet()
-      console.log("sad")
+      // change to next card
       this.likePet({pet_id: this.currentPet._id})
     },
     dislike() {
+      // change to next card
       this.nextPet()
       this.dislikePet({pet_id: this.currentPet._id})
     }

@@ -5,15 +5,13 @@
         <img class="ui small circular image centered" v-bind:src="user_data.picture.large">
       </div>
       <div class="ui header">{{user_data.username}}</div>
+      <br>
       <div class="description">
-        <p>ชื่อ : {{user_data.firstName}} {{user_data.lastName}}</p>
-        <p>email : {{user_data.email}}</p>
-        <p>เบอร์โทร : {{user_data.phoneNumber}}</p>
+        <p>Name : {{user_data.firstName}} {{user_data.lastName}}</p>
+        <p>Email : {{user_data.email}}</p>
+        <p>Tel. : {{user_data.phoneNumber}}</p>
       </div>
-      <div class="extra content">
-
-
-      </div>
+      <br><br>
       <!--<hr style="width: 5px; height: 100px; background: black; border: none;" />-->
       <div class="ui buttons ">
         <button class="ui button" v-on:click="routeToSetting">
