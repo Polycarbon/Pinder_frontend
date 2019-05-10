@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="ui segment" style="margin-bottom: 5%;"> -->
   <div class="matches" style="margin-top: 10%;">
     {{currentPet}}
     <div class="ui centered link cards">
@@ -27,7 +26,6 @@
           </div>
         </div>
       </div>
-    </div>
     </div>
     <div class="ui basic red button" type="submit" @click="popupUnmatch">
       <i class="close icon" style="margin-left: 10%"></i>
@@ -88,12 +86,6 @@ export default {
       // $(".ui.modal").modal("show");
       this.count = this.count + 1
       console.log(this.count)
-    },
-    popupUnmatch() {
-
-    },
-    like(){
-
     }
   },
   mounted() {
