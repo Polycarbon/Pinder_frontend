@@ -1,7 +1,8 @@
 <template>
   <!-- <div class="ui segment" style="margin-bottom: 5%;"> -->
   <div class="matches" style="margin-top: 10%;">
-    <div class="ui centered solid link cards" style="margin-bottom: 3%" v-for="pet in Pets2" v-bind:key="pet._id">
+    <div class="ui centered link cards" style="margin-bottom: 3%" v-for="(pet,i) in Pets2" v-bind:key="pet._id">
+      <div class= "check" v-if="i === count ">
       <div class="ui card">
         <div class="medium image">
           <router-link :to="{ path: 'profilepet/' + pet._id}">
@@ -27,13 +28,14 @@
         </div>
       </div>
     </div>
-    <div class="ui basic red button" @click="popupUnmatch">
+    </div>
+    <div class="ui basic red button" type="submit" @click="popupUnmatch">
       <i class="close icon" style="margin-left: 10%"></i>
     </div>
-    <div class="ui basic green button" @click="popupMatch">
+    <div class="ui basic green button" type="submit" @click="popupMatch">
       <i class="thumbs up outline icon" style="margin-left: 10%"></i>
     </div>
-
+    
     <!-- if match it's show modal that performed information who you match -->
     <div class="ui modal">
       <i class="close icon"></i>
@@ -60,6 +62,7 @@
       </div>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -71,6 +74,7 @@ export default {
   data() {
     return {
       Pets: [],
+      count : 0
     }
   },
   computed: {
@@ -83,10 +87,12 @@ export default {
       fetchPets: 'Pet/getPets'
     }),
     popupMatch() {
-      $(".ui.modal").modal("show");
+      // $(".ui.modal").modal("show");
+      this.count = this.count + 1
+      console.log(this.count)
     },
     popupUnmatch() {
-
+        
     },
     like(){
 
