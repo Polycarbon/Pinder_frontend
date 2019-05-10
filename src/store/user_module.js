@@ -11,10 +11,10 @@ const userModule = {
     auth_request(state) {
       state.status = 'loading'
     },
-    auth_success(state, token, user) {
+    auth_success(state, data) {
       state.status = 'success'
-      state.token = token
-      state.user = user
+      state.token = data.token
+      state.user = data.user
     },
     auth_error(state) {
       state.status = 'error'
@@ -33,16 +33,14 @@ const userModule = {
       commit('auth_request')
       UserService.verifyUser(user)
         .then(res => {
-          const token = res.data.token;
-          const user = res.data.user;
-          localStorage.setItem('token', token);
-          console.log(res.data)
+          localStorage.setItem('token', res.data.token);
           // Add the following line:
           UserService.setHeader({
             key: 'Authorization',
-            value: token
+            value: res.data.token
           });
-          commit('auth_success', token, user)
+          commit('auth_success', res.data)
+          return ("auth_success")
         })
         .catch(err => {
           commit('auth_error')
@@ -62,10 +60,10 @@ const userModule = {
     }
   },
   getters: {
-    isLoggedIn: state => {
-      return !!state.token
-    },
+    isLoggedIn: state => !!state.token,
     authStatus: state => state.status,
+    getUser: state => state.user
+
   }
 };
 

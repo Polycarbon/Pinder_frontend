@@ -4,7 +4,7 @@ const petModule = {
   namespaced: true,
   state: {
     message: 'Vue.js Advance Boilerplate',
-    pets: []
+    pets: null
   },
   mutations: {
     SET_MESSAGE(state, message) {
@@ -28,6 +28,9 @@ const petModule = {
   getters: {
     getPets(state) {
       return state.pets
+    },
+    getCurrent(state) {
+      return state.pets[1]
     }
   }
 }

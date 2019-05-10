@@ -1,8 +1,9 @@
 <template>
   <!-- <div class="ui segment" style="margin-bottom: 5%;"> -->
   <div class="matches" style="margin-top: 10%;">
-    <div class="ui centered link cards" style="margin-bottom: 3%" v-for="pet in Pets" v-bind:key="pet._id">
-      <div class="ui card">
+    {{currentPet}}
+    <div class="ui centered link cards">
+      <div class="ui card" style="margin-bottom: 3%" v-for="pet in Pets" v-bind:key="pet._id">
         <div class="medium image">
           <router-link :to="{ path: 'profileuser/' + pet._id}">
             <a class="img">
@@ -64,19 +65,18 @@
 
 <script>
 /* eslint-disable */
-import axios from "axios";
 import {mapGetters, mapActions} from 'vuex'
 export default {
   name: "Match",
   data() {
     return {
-      Pets: [],
     }
   },
   computed: {
     ...mapGetters({
-      Pets2: 'Pet/getPets'
-    }),
+      Pets: 'Pet/getPets',
+      currentPet: 'Pet/getCurrent'
+    })
   },
   methods: {
     ...mapActions({
@@ -88,7 +88,9 @@ export default {
     popupUnmatch() {}
   },
   mounted() {
-    this.fetchPets()
+    if (this.Pets === null) {
+      this.fetchPets()
+    }
   }
 };
 </script>

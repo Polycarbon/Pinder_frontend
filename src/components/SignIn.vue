@@ -1,30 +1,26 @@
 <template>
-  <div class="ui raised very padded text container segment">
+  <div id="signIn">
     <div class="ui middle aligned center aligned grid">
       <div class="column">
-        <h2 class="ui  image header">
+        <h2 class="ui orange image header">
           <img src="https://i.ibb.co/2qhS8Yv/social-34-5126-removebg.png" class="image">
           <br>
-          <div class="content ">
-            Log-in to your account
-          </div>
+          Sign In to your account
         </h2>
         <form class="ui large form">
-          <div class="ui stacked segment">
-            <div class="field">
-              <div class="ui left icon input">
-                <i class="user icon"></i>
-                <input type="text" name="username" placeholder="Username" v-model="username">
-              </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <input type="text" name="username" placeholder="Username" v-model="username">
             </div>
-            <div class="field">
-              <div class="ui left icon input">
-                <i class="lock icon"></i>
-                <input type="password" name="password" placeholder="Password" v-model="password">
-              </div>
-            </div>
-            <div class="ui fluid large  submit button lov" v-on:click="submit">Login</div>
           </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <input type="password" name="password" placeholder="Password" v-model="password">
+            </div>
+          </div>
+          <div class="ui orange fluid large  submit button " v-on:click="submit">Login</div>
           <div class="ui error message"></div>
         </form>
         <div class="ui message">
@@ -47,6 +43,11 @@
         password: null
       }
     },
+    computed: {
+      ...mapGetters({
+        user_data: 'User/getUser'
+      })
+    },
     methods: {
       ...mapActions({
         login: 'User/login'
@@ -57,32 +58,34 @@
           password: this.password
         };
         this.login(data)
+        setTimeout(() => {
+          if (this.user_data.firstName === null || this.user_data.lastName === null) {
+            this.$router.push('/edit')
+          } else this.$router.push('/matches')
+
+        }, 200);
       }
     }
   }
 </script>
 
-
 <style scoped>
-  .content {
-    color: orange
+  #signIn {
+    margin-top: 100px;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
-  .lov {
-    color: white;
-    background-color: orange;
-    background: orange
+  body {
+    background-color: #DADADA;
+    margin-top: 100px;
   }
 
-  .lov {
-    color: white;
-    background-color: orange
-
+  body > .grid {
+    height: 100%;
   }
 
-  .lov:hover {
-
-    background-color: orangered
+  .column {
+    max-width: 450px;
   }
-
 </style>

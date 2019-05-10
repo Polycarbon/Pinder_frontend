@@ -1,6 +1,6 @@
 <template>
   <div class="ui label">
-    profile LLLOOLLL
+    profile
   </div>
 </template>
 

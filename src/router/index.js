@@ -7,6 +7,7 @@ import Favorite from '@/components/Favorite'
 import SignIn from '@/components/SignIn'
 import SignUp from '@/components/SignUp'
 import Profileuser from '@/components/Profileuser'
+import Profile from '@/components/Profile'
 import Editprofile from '@/components/Editprofile'
 import Setting from '@/components/Setting'
 
