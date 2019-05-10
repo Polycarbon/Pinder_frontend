@@ -60,7 +60,8 @@ const userModule = {
     }
   },
   getters: {
-    isLoggedIn: state => !!state.token,
+    isLoggedIn: state => true,
+    // isLoggedIn: state => !!state.token,
     authStatus: state => state.status,
     getUser: state => state.user
 
