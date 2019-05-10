@@ -1,10 +1,10 @@
 <template>
   <!-- <div class="ui segment" style="margin-bottom: 5%;"> -->
   <div class="matches" style="margin-top: 10%;">
-    <div class="ui centered link cards" style="margin-bottom: 3%" v-for="pet in Pets" v-bind:key="pet._id">
+    <div class="ui centered solid link cards" style="margin-bottom: 3%" v-for="pet in Pets2" v-bind:key="pet._id">
       <div class="ui card">
         <div class="medium image">
-          <router-link :to="{ path: 'profileuser/' + pet._id}">
+          <router-link :to="{ path: 'profilepet/' + pet._id}">
             <a class="img">
               <img
                 class="ui medium image"
@@ -85,7 +85,12 @@ export default {
     popupMatch() {
       $(".ui.modal").modal("show");
     },
-    popupUnmatch() {}
+    popupUnmatch() {
+
+    },
+    like(){
+
+    }
   },
   mounted() {
     this.fetchPets()

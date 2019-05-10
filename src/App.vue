@@ -9,7 +9,7 @@
           <i class="big fire orange icon"></i>
         </a>
         <a class="column middle aligned  item" href="#/favorite">
-          <i class="big conversation orange icon"></i>
+          <i class="big star orange icon"></i>
         </a>
       </div>
       <router-view/>
