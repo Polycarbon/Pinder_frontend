@@ -23,8 +23,19 @@ export default {
   name: 'App',
   computed: {
     ...mapGetters({
-      isLogin: 'User/isLoggedIn'
+      isLogin: 'User/isLoggedIn',
+      user_data: 'User/getUser'
     })
+  },
+  methods: {
+    ...mapActions({
+      verifyToken: "User/verifyToken"
+    })
+  },
+  async mounted() {
+    if (this.user_data === null) {
+      await this.verifyToken()
+    }
   }
 }
 </script>

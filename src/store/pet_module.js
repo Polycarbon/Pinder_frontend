@@ -3,14 +3,10 @@ import {PetsService} from '../resource'
 const petModule = {
   namespaced: true,
   state: {
-    message: 'Vue.js Advance Boilerplate',
     pets: null,
     pet_index: 0
   },
   mutations: {
-    SET_MESSAGE(state, message) {
-      state.message = message
-    },
     SET_PETS(state, pets) {
       state.pets = pets
     },
@@ -29,6 +25,10 @@ const petModule = {
     },
     nextPet({commit, state}) {
       commit('NEXT_PET')
+    },
+    async getByList({commit, state}, data) {
+      let response = await PetsService.getByList(data);
+      return response.data
     }
   },
   getters: {
@@ -37,8 +37,6 @@ const petModule = {
     },
     getCurrent(state) {
       if (state.pets !== null) {
-        console.log("p_id:" + state.pet_index);
-        console.log("p_size:" + state.pets.length);
         if (state.pet_index < state.pets.length) {
           return state.pets[state.pet_index]
         } else {

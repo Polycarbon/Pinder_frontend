@@ -38,7 +38,6 @@
 
 <script>
 /* eslint-disable */
-import axios from "axios";
 import {mapGetters, mapActions} from 'vuex'
 export default {
   name: "Match",
@@ -55,18 +54,21 @@ export default {
   methods: {
     ...mapActions({
       fetchPets: 'Pet/getPets',
-      nextPet: 'Pet/nextPet'
+      nextPet: 'Pet/nextPet',
+      like: 'User/like',
+      dislike: 'User/dislike'
     }),
     popupMatch() {
       // $(".ui.modal").modal("show");
       // this.count = this.count + 1
       // console.log(this.count)
       this.nextPet()
+      this.like({pet_id: this.currentPet._id})
     }
   },
-  mounted() {
+  async mounted() {
     if (this.Pets === null) {
-      this.fetchPets()
+      await this.fetchPets()
     }
   }
 };

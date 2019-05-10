@@ -5,7 +5,7 @@ const userModule = {
   state: {
     status: '',
     token: localStorage.getItem('token') || '',
-    user: {}
+    user: null
   },
   mutations: {
     auth_request(state) {
@@ -31,7 +31,7 @@ const userModule = {
     },
     login({commit}, user) {
       commit('auth_request')
-      UserService.verifyUser(user)
+      UserService.loginUser(user)
         .then(res => {
           localStorage.setItem('token', res.data.token);
           // Add the following line:
@@ -50,6 +50,14 @@ const userModule = {
     async register({commit}, user) {
       return await UserService.createUser(user);
     },
+    async verifyToken({state, commit}) {
+      let data = {
+        token: state.token
+      };
+      let res = await UserService.verifyToken(data);
+      localStorage.setItem('token', res.data.token);
+      commit('auth_success', res.data)
+    },
     logout({commit}) {
       return new Promise((resolve, reject) => {
         commit('logout')
@@ -57,13 +65,40 @@ const userModule = {
         delete axios.defaults.headers.common['Authorization']
         resolve()
       })
+    },
+    async like({state, commit}, data) {
+      data.user_id = state.user._id
+      state.user.like.push(data.pet_id)
+      let msg = await UserService.like(data);
+      console.log(msg)
+    },
+    async dislike({state, commit}, data) {
+      data.user_id = state.user._id
+      state.user.dislike.push(data.pet_id)
+      let msg = await UserService.dislike(data);
+      console.log(msg)
+    },
+    async setProfile({state, commit}, data) {
+      let p = {
+        criteria: {
+          _id: state.user._id
+        },
+        data: data,
+        opts: {
+          multi: false
+        }
+      };
+      let msg = await UserService.setProfile(p);
+      console.log(msg)
     }
+
   },
   getters: {
-    isLoggedIn: state => true,
-    // isLoggedIn: state => !!state.token,
+    // isLoggedIn: state => true,
+    isLoggedIn: state => !!state.token,
     authStatus: state => state.status,
-    getUser: state => state.user
+    getUser: state => state.user,
+    getFavList: state => state.user.like
 
   }
 };

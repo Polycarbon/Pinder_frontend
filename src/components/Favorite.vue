@@ -17,27 +17,27 @@
             <div class="ui centered stackable link cards">
               <div class= "ui card">
                 <img
-                class="ui medium image" 
-                v-if="pet.pictures===null"
-                v-bind:src="'http://api.adorable.io/avatars/285/'+pet.name+'.png'"
+                  class="ui medium image"
+                  v-if="pet.pictures===null"
+                  v-bind:src="'http://api.adorable.io/avatars/285/'+pet.name+'.png'"
               >
               <img class="ui medium image" v-else v-bind:src="pet.pictures[0].large">
               <div class="ui orange bottom attached label" v-if="pet.status ==='adopted'">{{pet.status}}</div>
               <div class="ui grey bottom attached label" v-else-if="pet.status ==='adoptable'">{{pet.status}}</div>
-            
+
               </div>
             </div>
           </router-link>
             </div>
           </div>
         </div>
-  
+
   </div>
 </template>
 
 <script>
-import axios from 'axios'
 /* eslint-disable */
+import {mapGetters, mapActions} from 'vuex'
   export default {
     name: 'favorite',
   data(){
@@ -45,24 +45,22 @@ import axios from 'axios'
       Pets:[]
     }
   },
-  methods(){
-
-  },
-  mounted(){
-      var url = "http://localhost:3000/pets";
-    axios
-      .get(url)
-      .then(response => {
-        console.log(response.data);
-        this.Pets = response.data;
-        console.log("///////////////////////////////////////////////////");
-        console.log(response.data[0].size);
+    computed: {
+      ...mapGetters({
+        favList: 'User/getFavList'
       })
-      .catch(error => {
-        console.log(error);
-      });
+    },
+    methods: {
+      ...mapActions({
+        getFavPet: 'Pet/getByList',
+      })
+  },
+    async mounted() {
+      let data = await this.getFavPet({list: this.favList})
+      this.Pets = data
+
     }
-    
+
   }
 </script>
 
