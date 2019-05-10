@@ -4,14 +4,16 @@
         <i class="orange star icon"></i>
         Favorites
     </p>
-    <div class= " segment" style="margin-top: 10%;">
+    <div class= " segment" style="margin-top: 7%;">
        <div class="ui grid">
+
           <div
             class="eight wide tablet four wide computer column"
             id="pic"
             v-for="pet in Pets"
             v-bind:key="pet._id"
           >
+          <router-link :to="{ path: 'profilepet/' + pet._id}">
             <div class="ui centered stackable link cards">
               <div class= "ui card">
                 <img
@@ -25,6 +27,7 @@
             
               </div>
             </div>
+          </router-link>
             </div>
           </div>
         </div>

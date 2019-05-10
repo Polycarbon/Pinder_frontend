@@ -5,7 +5,7 @@
     <div class="ui centered link cards">
       <div class="ui card" style="margin-bottom: 3%" v-for="pet in Pets" v-bind:key="pet._id">
         <div class="medium image">
-          <router-link :to="{ path: 'profileuser/' + pet._id}">
+          <router-link :to="{ path: 'profilepet/' + pet._id}">
             <a class="img">
               <img
                 class="ui medium image"
@@ -28,10 +28,11 @@
         </div>
       </div>
     </div>
-    <div class="ui basic red button" @click="popupUnmatch">
+    </div>
+    <div class="ui basic red button" type="submit" @click="popupUnmatch">
       <i class="close icon" style="margin-left: 10%"></i>
     </div>
-    <div class="ui basic green button" @click="popupMatch">
+    <div class="ui basic green button" type="submit" @click="popupMatch">
       <i class="thumbs up outline icon" style="margin-left: 10%"></i>
     </div>
 
@@ -65,6 +66,7 @@
 
 <script>
 /* eslint-disable */
+import axios from "axios";
 import {mapGetters, mapActions} from 'vuex'
 export default {
   name: "Match",
@@ -83,9 +85,16 @@ export default {
       fetchPets: 'Pet/getPets'
     }),
     popupMatch() {
-      $(".ui.modal").modal("show");
+      // $(".ui.modal").modal("show");
+      this.count = this.count + 1
+      console.log(this.count)
     },
-    popupUnmatch() {}
+    popupUnmatch() {
+
+    },
+    like(){
+
+    }
   },
   mounted() {
     if (this.Pets === null) {

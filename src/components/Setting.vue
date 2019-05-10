@@ -1,180 +1,95 @@
 <template>
-    <div class="ui raised very padded text container segment">
-       <h2 class="ui  image header">
+  <div class="ui raised very padded text container segment">
+    <h2 class="ui image header">
       <img src="https://i.ibb.co/2qhS8Yv/social-34-5126-removebg.png" class="image">
       <br>
-      <div class="content ">
-        Setting
-      </div>
+      <div class="content">Setting</div>
     </h2>
-      
-        <!-- <div class="vertical-menu segment">
-          <div class="ui form">
-  <div class="two fields">
-    <div class="field ui left header aligned">
-      <label>Display Name</label>
-      <input placeholder="Display Name" type="text">
+  <br>
+    <div class="ui form meta ">
+      <div class="inline fields">
+        <label>Gender</label>
+        <select class="ui fluid selection dropdown" v-model="selectedGender">
+          <option :value="null">Please select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option :value="null">Please select</option>
+        </select>
+      </div>
     </div>
-    <div class="field ui left header aligned">
-      <label>Location</label>
-      <input placeholder="Location" type="text">
+    <div class="ui form meta">
+      <div class="inline fields">
+        <label>Type</label>
+        <select class="ui fluid selection dropdown" v-model="selectedType">
+          <option :value="null">Please select</option>
+          <option value="Dog" >Dog</option>
+          <option value="Cat">Cat</option>
+        </select>
+      </div>
     </div>
+    <div class="ui form meta">
+      <div class="inline fields">
+        <label>Age</label>
+        <select class="ui fluid selection dropdown" v-model="selectedAge">
+          <option :value="null">Please select</option>
+          <option value="Baby">Baby</option>
+          <option value="Adult">Adult</option>
+          <option value="Senior">Senior</option>
+        </select>
+      </div>
+    </div>
+    <div class="ui form meta">
+      <div class="inline fields">
+        <label>Size</label>
+        <select class="ui fluid selection dropdown" v-model="selectedSize">
+          <option :value="null">Please select</option>
+          <option value="Small" >Small</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
+          <option value="Extra Large">Extra Large</option>
+        </select>
+      </div>
+    </div>
+    <br>
+    <!-- {{selectedGender}}
+    {{selectedType}}
+    {{selectedAge}}
+    {{selectedSize}} -->
+    <router-link :to="{ path: 'profile/'}">
+    <button class="ui button orange" type="submit" @click="addtoPet">Save</button>
+    <button class="ui button" type="submit" onclick="window.location.href ='#/profile'">Discard</button>
+    </router-link>
   </div>
- <div class="field ui left header aligned">
-    <select>
-      <option value="">Gender</option>
-      <option value="1">Male</option>
-      <option value="0">Female</option>
-    </select>
-  </div>
-  <div class="ui form">
-  <div class="three fields">
-    <div class="field ui left header aligned">
-      <label>Phone Number</label>
-      <input type="text" placeholder="Phone Number">
-    </div>
-    <div class="field ui left header aligned">
-      <label>Email</label>
-      <input type="text" placeholder="Email">
-    </div>
-    <div class="field ui left header aligned">
-      <label>Address</label>
-      <input type="text" placeholder="Address">
-    </div>
-  </div>
-</div>
-  
-</div>
-        
-        <!-- <a href="#"> -->
-            <!-- <div class="ui left aligned header">Maximum Distance (KM)</div>
-            <div class="slidercontainer">
-                <form oninput="result.value=parseInt(b.value)">
-                    <input type="range" min="1" max="100" value="" class="slider" id="b" >
-                    <output name="result" > </output>
-                    km
-                </form>
-            </div>
-            </div>
-                    <!-- </a> -->
-        
-        <!-- <a href="#"><output id="myRange" ></output></a> --> 
-        
-<div class="ui form header ">
-  <div class="inline fields">
-    <label>Gender</label>
-    <div class="field " style ="margin-left:11.2%">
-      <div class="ui radio checkbox">
-        <input type="radio"  name="fr" checked="checked">
-        <label>Male</label>
-      </div>
-    </div>
-    <div class="field" style ="margin-left:19%">
-      <div class="ui radio checkbox">
-        <input type="radio" name="fr">
-        <label>Female</label>
-      </div>
-    </div>
-  
-    
-    
-  </div>
-</div>
-<div class="ui form header">
-  <div class="inline fields">
-    <label>Type</label>
-    <div class="field" style ="margin-left:15%">
-      <div class="ui radio checkbox">
-        <input type="radio" name="frequency" checked="checked">
-        <label>Dog</label>
-      </div>
-    </div>
-    <div class="field" style ="margin-left:20%">
-      <div class="ui radio checkbox">
-        <input type="radio" name="frequency">
-        <label>Cat</label>
-      </div>
-    </div>
-    <div class="field " style ="margin-left:20%" >
-      <div class="ui radio checkbox">
-        <input type="radio" name="frequency" >
-        <label>Exotic</label>
-      </div>
-    </div>
-    
-
-  </div>
-</div>
-<div class="ui form header">
-  <div class="inline fields">
-    <label>Age</label>
-    <div class="field" style ="margin-left:16.2%">
-      <div class="ui radio checkbox">
-        <input type="radio" name="frequen" checked="checked">
-        <label>Baby</label>
-      </div>
-    </div>
-    <div class="field" style ="margin-left:19%">
-      <div class="ui radio checkbox">
-        <input type="radio" name="frequen">
-        <label>Adult</label>
-      </div>
-    </div>
-    <div class="field" style ="margin-left:18%">
-      <div class="ui radio checkbox">
-        <input type="radio" name="frequen">
-        <label>Senior</label>
-      </div>
-    </div>
-    
-    
-  </div>
-</div>
-<div class="ui form header " >
-  <div class="inline fields">
-    <label>Size</label>
-    <div class="field " style ="margin-left:16%">
-      <div class="ui radio checkbox">
-        <input type="radio"  name="fre" checked="checked">
-        <label>Small</label>
-      </div>
-    </div>
-    <div class="field" style ="margin-left:4%">
-      <div class="ui radio checkbox">
-        <input type="radio" name="fre">
-        <label>Medium</label>
-      </div>
-    </div>
-    <div class="field" style ="margin-left:4%">
-      <div class="ui radio checkbox">
-        <input type="radio" name="fre">
-        <label>Large</label>
-      </div>
-    </div>
-    <div class="field" style ="margin-left:4%">
-      <div class="ui radio checkbox ">
-        <input type="radio" name="fre">
-        <label>Extra Large</label>
-      </div>
-    </div>
-    
-    
-  </div>
-</div>
-        <button class="ui  button orange">
-  Save
-</button>
-<button class="ui button" onclick="location.href='#/profile'">
-  Discard
-</button>
-
-        
-        
-    </div>
 </template>
+
 <script>
+import axios from "axios";
+import {mapGetters, mapActions} from 'vuex'
 export default {
-  methods: {},
+  name: 'setting',
+  data(){
+    return{
+      Pets:[],
+      selectedGender : null,
+      selectedType : null,
+      selectedAge : null,
+      selectedSize : null,
+    }
+  },
+  methods: {
+    addtoPet(){
+      let dataUser = {
+        gender: this.selectedGender,
+        type: this.selectedType,
+        age: this.selectedAge,
+        size: this.selectedSize
+      };
+      console.log(dataUser)
+      console.log(gender)
+      console.log(this.selectedGender)
+
+    }
+  }
 };
 </script>
 
@@ -234,6 +149,5 @@ export default {
   background: #4caf50;
   cursor: pointer;
 }
-
 </style>
 
