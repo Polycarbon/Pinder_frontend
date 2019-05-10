@@ -13,6 +13,9 @@ class PersonProvider extends HttpRequest {
     return this.create('/verify', data)
   }
 
+  fetchUser(id) {
+    return this.fetch(/user/ + id)
+  }
   like(data) {
     return this.create('/user/like', data)
   }

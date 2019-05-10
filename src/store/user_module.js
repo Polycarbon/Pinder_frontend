@@ -1,5 +1,5 @@
 import {UserService} from '../resource'
-
+import axios from 'axios'
 const userModule = {
   namespaced: true,
   state: {
@@ -23,6 +23,9 @@ const userModule = {
       state.status = ''
       state.token = ''
     },
+    set_user(state, user) {
+      state.user = user
+    }
   },
   actions: {
     async fetchUser({commit, state}, data) {
@@ -66,17 +69,20 @@ const userModule = {
         resolve()
       })
     },
+    async getUser({state, commit}) {
+      let response = await UserService.fetchUser(state.user._id);
+      commit('set_user', response.data)
+    },
     async like({state, commit}, data) {
       data.user_id = state.user._id
       state.user.like.push(data.pet_id)
-      let msg = await UserService.like(data);
-      console.log(msg)
+      console.log(state.user.like)
+      await UserService.like(data);
     },
     async dislike({state, commit}, data) {
       data.user_id = state.user._id
       state.user.dislike.push(data.pet_id)
-      let msg = await UserService.dislike(data);
-      console.log(msg)
+      await UserService.dislike(data);
     },
     async setProfile({state, commit}, data) {
       let p = {
@@ -89,7 +95,7 @@ const userModule = {
         }
       };
       let msg = await UserService.setProfile(p);
-      console.log(msg)
+
     }
 
   },

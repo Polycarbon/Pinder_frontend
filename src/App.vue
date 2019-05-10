@@ -34,7 +34,7 @@ export default {
   },
   async mounted() {
     if (this.user_data === null) {
-      await this.verifyToken()
+      // await this.verifyToken()
     }
   }
 }

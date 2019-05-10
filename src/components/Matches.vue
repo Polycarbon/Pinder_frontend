@@ -50,12 +50,14 @@
 
 <script>
 /* eslint-disable */
-import axios from "axios";
 import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Match",
   data() {
-    return { i: 0 };
+    return {
+      i: 0,
+      current: null
+    };
   },
   computed: {
     ...mapGetters({
@@ -67,21 +69,24 @@ export default {
     ...mapActions({
       fetchPets: 'Pet/getPets',
       nextPet: 'Pet/nextPet',
-      like: 'User/like',
-      dislike: 'User/dislike'
+      likePet: 'User/like',
+      dislikePet: 'User/dislike'
     }),
-    popupMatch() {
-      // $(".ui.modal").modal("show");
-      // this.count = this.count + 1
-      // console.log(this.count)
+    like() {
       this.nextPet()
-      this.like({pet_id: this.currentPet._id})
+      console.log("sad")
+      this.likePet({pet_id: this.currentPet._id})
+    },
+    dislike() {
+      this.nextPet()
+      this.dislikePet({pet_id: this.currentPet._id})
     }
   },
   async mounted() {
     if (this.Pets === null) {
       await this.fetchPets()
     }
+    await this.currentPet
   }
 };
 </script>

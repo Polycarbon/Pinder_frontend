@@ -6,16 +6,13 @@
       </div>
       <div class="ui header">{{user_data.username}}</div>
       <div class="description">
-        <p>{{user_data.firstName}}</p>
+        <p>ชื่อ : {{user_data.firstName}} {{user_data.lastName}}</p>
+        <p>email : {{user_data.email}}</p>
+        <p>เบอร์โทร : {{user_data.phoneNumber}}</p>
       </div>
       <div class="extra content">
-      <span class="right floated">
-        Joined in 2013
-      </span>
-        <span>
-        <i class="user icon"></i>
-        75 Friends
-      </span>
+
+
       </div>
       <!--<hr style="width: 5px; height: 100px; background: black; border: none;" />-->
       <div class="ui buttons ">
@@ -43,7 +40,8 @@
     methods: {
       ...mapActions({
         verifyToken: "User/verifyToken",
-        logout: "User/logout"
+        logout: "User/logout",
+        newUser: "User/getUser"
       }),
       routeToEdit() {
         this.$router.push('/edit')
@@ -52,7 +50,7 @@
         this.$router.push('/setting')
       },
       logOut() {
-        logout()
+        this.logout()
         this.$router.push('/signin')
       }
     },
@@ -60,6 +58,7 @@
       if (this.user_data === null) {
         await this.verifyToken()
       }
+      await this.newUser()
     }
   }
 </script>
