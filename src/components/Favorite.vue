@@ -67,7 +67,7 @@ import {mapGetters, mapActions} from 'vuex'
 
 <style scoped>
   #favourite {
-    margin-top: 100px;
+    margin-top: 25px;
     margin-left: 5%;
     margin-right: 5%;
   }

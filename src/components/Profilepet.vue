@@ -105,7 +105,7 @@ export default {
 
 <style scoped>
 #profilepet {
-    margin-top: 100px;
+    margin-top: 50px;
     margin-left: 5%;
     margin-right: 5%;
   }

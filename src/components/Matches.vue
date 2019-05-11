@@ -74,14 +74,15 @@ export default {
       dislikePet: 'User/dislike'
     }),
     like() {
-      this.nextPet()
       // change to next card
       this.likePet({pet_id: this.currentPet._id})
+      this.nextPet()
+      
     },
     dislike() {
       // change to next card
-      this.nextPet()
       this.dislikePet({pet_id: this.currentPet._id})
+      this.nextPet()
     }
   },
   async mounted() {
